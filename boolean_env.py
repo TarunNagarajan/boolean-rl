@@ -90,6 +90,37 @@ class BooleanSimplificationEnv:
         state = np.array([count_literals, count_and, count_or, count_not, count_equivalent, count_implies, count_xor, depth, current_complexity, is_simplified])
         return state
     
-    def 
-    
+    def _get_available_rules(self):
+        rules = [] 
 
+        # Rule 1: general simplification
+        rules.append(lambda expr: sympy.simplify_logic(expr))
+
+        # Rule 2: convert to dnf (disjunctive normal form)
+        rules.append(lambda expr: sympy.simplify_logic(expr, form = 'dnf'))
+
+        # Rule 3: convert to cnf (conjunctive normal form)
+        rules.append(lambda expr: sympy.simplify_logic(expr, form = 'cnf'))
+
+        # Rule 4: distributive law
+        rules.append(lambda expr: sympy.distibute(expr))
+
+        # Rule 5: absoption law
+        rules.append(lambda expr: sympy.absorb(expr))
+
+        # Rules 6: complement law   
+        rules.append(lambda expr: sympy.complement(expr))
+
+        # Rule 7: idempotent law
+        rules.append(lambda expr: sympy.idempotent(expr))
+
+        # Rule 8: associative law
+        rules.append(lambda expr: sympy.associate(expr))
+
+        # Rule 9: commutative law
+        rules.append(lambda expr: sympy.commute(expr))
+
+        # so far, these rules apply on a whole expression
+        return rules
+    
+    
