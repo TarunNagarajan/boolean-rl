@@ -14,7 +14,7 @@ class BooleanSimplificationEnv:
         self.current_expression = None
         self.initial_complexity = 0
         self.steps_taken = 0
-        self.action_space_size = 10
+        self.action_space_size = len(self._get_available_rules())
 
     def _generate_random_expr(self, depth):
         if depth == 0 or random.random() < 0.3:
@@ -103,7 +103,7 @@ class BooleanSimplificationEnv:
         rules.append(lambda expr: sympy.simplify_logic(expr, form = 'cnf'))
 
         # Rule 4: distributive law
-        rules.append(lambda expr: sympy.distibute(expr))
+        rules.append(lambda expr: sympy.distribute(expr))
 
         # Rule 5: absoption law
         rules.append(lambda expr: sympy.absorb(expr))
@@ -123,4 +123,4 @@ class BooleanSimplificationEnv:
         # so far, these rules apply on a whole expression
         return rules
     
-    
+
