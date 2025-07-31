@@ -90,6 +90,12 @@ class BooleanSimplificationEnv:
         state = np.array([count_literals, count_and, count_or, count_not, count_equivalent, count_implies, count_xor, depth, current_complexity, is_simplified])
         return state
     
+    def get_state_size(self):
+        return len(self._get_state())
+    
+    def get_action_size(self):
+        return len(self._get_available_rules())
+    
     def _get_available_rules(self):
         rules = [] 
 
@@ -122,5 +128,62 @@ class BooleanSimplificationEnv:
 
         # so far, these rules apply on a whole expression
         return rules
+    
+    def step(self, action):
+        self.steps_taken += 1
+        reward = 0
+        done = False
+
+        rules = self._get_available_rules()
+
+        # check action validity
+        if not (0 <= action < len(rules)):
+            reward = -2.0
+            done = True
+            next_state = self._get_state()
+            return next_state, reward, done, {}
+        
+        # apply the selected rule
+        old_expression = self.current_expression
+        old_complexity = self._get_complexity(old_expression)
+
+        new_expression = rules[action](self.current_expression)
+        self.current_expression = new_expression
+        new_complexity = self._get_complexity(new_expression)
+
+        if new_complexity < old_complexity:
+            # reward proportional to the reduction
+            reward = (old_complexity - new_complexity) * 0.1
+
+        elif new_complexity > old_complexity:
+            # complexity of the equation has increased. warrants significant penalty
+            reward = -1.0
+
+        elif new_expression == old_expression:
+            # expression hasn't changed
+            reward = -0.5   
+
+        else:
+            # complexity remained the same, but the form of the expression is different
+            reward = -0.05 
+
+        # final simplification check
+        if (sympy.Equivalent(sympy.simplify_logic(self.current_expression), self.current_expression)):
+            # means that the expression is fully simplfied
+            reward += 5.0
+            done = True
+
+        # exceeded the amount of steps, and if we've reached this point, it means that the agent didn't find the simplified expr.
+        if (self.steps_taken >= self.max_steps):
+            done = True
+            reward -= 1.0
+
+        # step penalty
+        reward -= 0.01
+
+        # prepping for the next step
+        next_state = self._get_state()
+        return next_state, reward, done, {}
+        
     
 
