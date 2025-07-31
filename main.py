@@ -82,19 +82,17 @@ def train_DQN():
         avg_score = np.mean(scores)
         
         # Print progress
-        print(f"Episode {episode}/{EPISODES} | Avg Score: {avg_score:.2f} | Epsilon: {agent.epsilon:.2f} | Initial Complexity: {env.initial_complexity}", end="")
+        print(f"Episode {episode}/{EPISODES} | Avg Score: {avg_score:.2f} | Epsilon: {agent.epsilon:.2f} | Initial Complexity: {env.initial_complexity}", end="")
         if episode % PRINT_EVERY == 0:
             print("") # New line for cleaner output
 
         # Check for solving condition
         if avg_score >= SOLVE_SCORE:
-            print(f"
-Environment solved in {episode} episodes! Average score: {avg_score:.2f}")
+            print(f"Environment solved in {episode} episodes! Average score: {avg_score:.2f}")
             break # Stop training early
 
     end_time = time.time()
-    print(f"
-Training finished in {end_time - start_time:.2f} seconds.")
+    print(f"Training finished in {end_time - start_time:.2f} seconds.")
     # TODO: You can add code here to save the trained model (e.g., torch.save(agent.qnet_policy.state_dict(), 'checkpoint.pth'))
 
 if __name__ == "__main__":
