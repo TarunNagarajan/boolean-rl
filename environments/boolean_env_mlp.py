@@ -4,7 +4,7 @@ from sympy.logic.boolalg import And, Or, Not, Equivalent, Implies, Xor
 import numpy as np
 from multiprocessing import Process, Queue
 
-from base_env import BaseBooleanEnv, _apply_rule_wrapper
+from .base_env import BaseBooleanEnv, _apply_rule_wrapper
 
 def _simplify_logic(expr):
     return sympy.simplify_logic(expr)

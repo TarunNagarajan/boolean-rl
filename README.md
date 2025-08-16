@@ -12,13 +12,15 @@ This project explores the use of deep reinforcement learning to simplify boolean
 
 ```
 boolrl/
-├── agent_gnn.py           # GNN-based DQN agent
-├── agent_mlp.py           # MLP-based DQN agent
-├── agent_seq.py           # Sequence-based (LSTM) DQN agent
-├── base_env.py            # Base class for the RL environments
-├── boolean_env_gnn.py     # RL environment for the GNN agent
-├── boolean_env_mlp.py     # RL environment for the MLP agent
-├── boolean_env_seq.py     # RL environment for the sequence agent
+├── agents/
+│   ├── agent_gnn.py           # GNN-based DQN agent
+│   ├── agent_mlp.py           # MLP-based DQN agent
+│   └── agent_seq.py           # Sequence-based (LSTM) DQN agent
+├── environments/
+│   ├── base_env.py            # Base class for the RL environments
+│   ├── boolean_env_gnn.py     # RL environment for the GNN agent
+│   ├── boolean_env_mlp.py     # RL environment for the MLP agent
+│   └── boolean_env_seq.py     # RL environment for the sequence agent
 ├── config.py              # Hyperparameters for training
 ├── gnn_models.py          # GNN model architecture
 ├── main.py                # Main script for training all agents

@@ -6,7 +6,7 @@ import random
 from multiprocessing import Process, Queue
 from torch_geometric.data import Data
 
-from base_env import BaseBooleanEnv, _apply_rule_wrapper
+from .base_env import BaseBooleanEnv, _apply_rule_wrapper
 
 def _apply_sympy_replace(expr, pattern, replacement):
     result, _ = expr.replace(pattern, replacement, map=True, simultaneous=True)

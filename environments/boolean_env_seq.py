@@ -2,7 +2,7 @@ import sympy
 from sympy.logic.boolalg import And, Or, Not, Equivalent, Implies, Xor
 import numpy as np
 
-from base_env import BaseBooleanEnv
+from .base_env import BaseBooleanEnv
 
 class BooleanSimplificationEnvSeq(BaseBooleanEnv):
     def __init__(self, max_expression_depth, max_literals, max_steps, max_seq_len=128):
@@ -67,7 +67,7 @@ class BooleanSimplificationEnvSeq(BaseBooleanEnv):
         old_complexity = self._get_complexity(self.current_expression)
 
         # Using the same multiprocessing wrapper as the base class for safety
-        from base_env import _apply_rule_wrapper
+        from .base_env import _apply_rule_wrapper
         from multiprocessing import Queue, Process
 
         q = Queue()
