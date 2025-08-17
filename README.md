@@ -21,11 +21,11 @@ boolrl/
 │   ├── boolean_env_gnn.py     # RL environment for the GNN agent
 │   ├── boolean_env_mlp.py     # RL environment for the MLP agent
 │   └── boolean_env_seq.py     # RL environment for the sequence agent
-├── config.py              # Hyperparameters for training
-├── gnn_models.py          # GNN model architecture
-├── main.py                # Main script for training all agents
-├── replay_buffer.py       # Replay buffer for the agents
-├── requirements.txt       # Python dependencies
+├── config.py              
+├── gnn_models.py          
+├── main.py               
+├── replay_buffer.py       
+├── requirements.txt      
 └── tests/
     ├── gnn/
     │   └── test_gnn.py
@@ -46,15 +46,14 @@ boolrl/
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
-    cd <repository-folder>
+    git clone https://github.com/TarunNagarajan/boolrl.git
+    cd boolrl
     ```
 
-2.  **Install dependencies:**
-    It is recommended to use a virtual environment.
+2.  **Dependencies:**
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    source venv/bin/activate
     ```
 
     Install the required packages from `requirements.txt`:
@@ -68,19 +67,19 @@ boolrl/
 
 The `main.py` script is used to train all three agents. You can select the agent to train using the `--model_type` command-line argument.
 
-### Train the MLP Agent
+### MLP Agent
 
 ```bash
 python boolrl/main.py --model_type mlp
 ```
 
-### Train the Sequence Agent
+### Sequence Agent
 
 ```bash
 python boolrl/main.py --model_type seq
 ```
 
-### Train the GNN Agent
+### GNN Agent
 
 ```bash
 python boolrl/main.py --model_type gnn
@@ -92,19 +91,19 @@ The script will save periodic checkpoints (e.g., `checkpoint_mlp_e100.pth`) and 
 
 After training, you can evaluate the performance of the agents using the test scripts.
 
-### Test the MLP Agent
+### Test MLP Agent
 
 ```bash
 python boolrl/tests/mlp/test_mlp.py
 ```
 
-### Test the Sequence Agent
+### Test Sequence Agent
 
 ```bash
 python boolrl/tests/seq/test_seq.py
 ```
 
-### Test the GNN Agent
+### Test GNN Agent
 
 ```bash
 python boolrl/tests/gnn/test_gnn.py
