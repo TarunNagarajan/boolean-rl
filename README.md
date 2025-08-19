@@ -35,13 +35,6 @@ boolrl/
         └── test_seq.py
 ```
 
-## Getting Started
-
-### Prerequisites
-
-*   Python 3.7+
-*   PyTorch
-
 ### Installation
 
 1.  **Clone the repository:**
