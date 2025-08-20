@@ -21,11 +21,11 @@ boolrl/
 │   ├── boolean_env_gnn.py     # RL environment for the GNN agent
 │   ├── boolean_env_mlp.py     # RL environment for the MLP agent
 │   └── boolean_env_seq.py     # RL environment for the sequence agent
-├── config.py
-├── gnn_models.py
-├── main.py
-├── replay_buffer.py
-├── requirements.txt
+├── config.py              
+├── gnn_models.py          
+├── main.py               
+├── replay_buffer.py       
+├── requirements.txt      
 └── tests/
     ├── gnn/
     │   └── test_gnn.py
