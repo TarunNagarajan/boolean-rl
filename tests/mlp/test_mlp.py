@@ -1,9 +1,9 @@
 import torch
-from boolean_env_mlp import BooleanSimplificationEnv
-from agent_mlp import DQNAgent
+from boolrl.environments.boolean_env_mlp import BooleanSimplificationEnv
+from boolrl.agents.agent_mlp import DQNAgent
 import numpy as np
 import time
-import config
+from boolrl import config
 
 def test_DQN_MLP(num_test_episodes=10):
     env = BooleanSimplificationEnv(max_expression_depth=config.MAX_EXPRESSION_DEPTH,
@@ -87,4 +87,4 @@ COLOR_RED = "\u001b[91m"
 COLOR_RESET = "\u001b[0m"
 
 if __name__ == "__main__":
-    test_DQN_MLP(num_test_episodes = 100)
+    test_DQN_MLP(num_test_episodes=250)

@@ -5,7 +5,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 from collections import deque, namedtuple
 import random
-from replay_buffer import ReplayBuffer
+from boolrl.replay_buffer import ReplayBuffer
 
 class QNetworkSeq(nn.Module):
     def __init__(self, vocab_size, action_size, seed, embedding_dim=32, hidden_size=64):

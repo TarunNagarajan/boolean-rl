@@ -6,13 +6,13 @@ import numpy as np
 from tqdm import tqdm
 import argparse
 
-import config
-from environments.boolean_env_mlp import BooleanSimplificationEnv as MlpEnv
-from agents.agent_mlp import DQNAgent as MlpAgent
-from environments.boolean_env_gnn import BooleanSimplificationEnvGNN as GnnEnv
-from agents.agent_gnn import DQNAgentGNN as GnnAgent
-from environments.boolean_env_seq import BooleanSimplificationEnvSeq as SeqEnv
-from agents.agent_seq import DQNAgentSeq as SeqAgent
+from boolrl import config
+from boolrl.environments.boolean_env_mlp import BooleanSimplificationEnv as MlpEnv
+from boolrl.agents.agent_mlp import DQNAgent as MlpAgent
+from boolrl.environments.boolean_env_gnn import BooleanSimplificationEnvGNN as GnnEnv
+from boolrl.agents.agent_gnn import DQNAgentGNN as GnnAgent
+from boolrl.environments.boolean_env_seq import BooleanSimplificationEnvSeq as SeqEnv
+from boolrl.agents.agent_seq import DQNAgentSeq as SeqAgent
 
 def train(agent, env, model_type, save_every=100):
     scores = deque(maxlen=100)

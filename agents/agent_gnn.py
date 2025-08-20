@@ -3,8 +3,8 @@ from collections import deque, namedtuple
 import torch
 import torch.nn.functional as F
 from torch_geometric.data import Data, DataLoader
-from gnn_models import GNNQNetwork
-from replay_buffer import ReplayBuffer
+from boolrl.gnn_models import GNNQNetwork
+from boolrl.replay_buffer import ReplayBuffer
 
 class DQNAgentGNN:
     def __init__(self,
